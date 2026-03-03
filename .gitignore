@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+mosques.txt
+mosques.pdf
+mosques_geocoded.json
+geocode_mosques.py
+.claude/

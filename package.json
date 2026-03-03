@@ -1,0 +1,7 @@
+{
+  "name": "tarawih-istanbul",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve -l 3456 ."
+  }
+}
