@@ -19,414 +19,80 @@
     --shadow: 0 2px 12px rgba(0,0,0,0.08);
     --radius: 12px;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  header {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    color: #fff;
-    padding: 16px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1000;
-  }
-
-  header h1 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-
-  header .subtitle {
-    font-size: 0.8rem;
-    opacity: 0.85;
-    margin-top: 2px;
-  }
-
-  .ramadan-info {
-    background: var(--gold);
-    color: var(--primary-dark);
-    padding: 8px 16px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .ramadan-info .day-badge {
-    background: var(--primary-dark);
-    color: #fff;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-  }
-
-  #map {
-    flex: 1;
-    min-height: 400px;
-    z-index: 1;
-  }
-
-  .controls {
-    position: absolute;
-    top: 110px;
-    right: 12px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .ctrl-btn {
-    background: var(--card-bg);
-    border: none;
-    border-radius: var(--radius);
-    padding: 10px 14px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--primary-dark);
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
-
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100dvh; display: flex; flex-direction: column; }
+  header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: #fff; padding: 16px 20px; text-align: center; position: relative; z-index: 1000; }
+  header h1 { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.02em; }
+  header .subtitle { font-size: 0.8rem; opacity: 0.85; margin-top: 2px; }
+  .ramadan-info { background: var(--gold); color: var(--primary-dark); padding: 8px 16px; text-align: center; font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .ramadan-info .day-badge { background: var(--primary-dark); color: #fff; padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; }
+  #map { flex: 1; min-height: 400px; z-index: 1; }
+  .controls { position: absolute; top: 110px; right: 12px; z-index: 1000; display: flex; flex-direction: column; gap: 8px; }
+  .ctrl-btn { background: var(--card-bg); border: none; border-radius: var(--radius); padding: 10px 14px; font-size: 0.8rem; font-weight: 600; color: var(--primary-dark); cursor: pointer; box-shadow: var(--shadow); display: flex; align-items: center; gap: 6px; white-space: nowrap; transition: all 0.2s; }
   .ctrl-btn:hover { background: var(--primary-light); }
   .ctrl-btn:active { transform: scale(0.97); }
-
-  .ctrl-btn.primary-btn {
-    background: var(--primary);
-    color: #fff;
-  }
+  .ctrl-btn.primary-btn { background: var(--primary); color: #fff; }
   .ctrl-btn.primary-btn:hover { background: var(--primary-dark); }
-
-  .bottom-panel {
-    background: var(--card-bg);
-    border-top: 1px solid #e8e8e5;
-    padding: 0;
-    position: relative;
-    z-index: 1000;
-  }
-
-  .panel-tabs {
-    display: flex;
-    border-bottom: 1px solid #e8e8e5;
-  }
-
-  .panel-tab {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--text-light);
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-  }
-
-  .panel-tab.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-  }
-
-  .panel-content {
-    display: none;
-    padding: 16px;
-  }
-
+  .bottom-panel { background: var(--card-bg); border-top: 1px solid #e8e8e5; padding: 0; position: relative; z-index: 1000; }
+  .panel-tabs { display: flex; border-bottom: 1px solid #e8e8e5; }
+  .panel-tab { flex: 1; padding: 10px; text-align: center; font-size: 0.8rem; font-weight: 600; cursor: pointer; color: var(--text-light); background: none; border: none; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .panel-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+  .panel-content { display: none; padding: 16px; }
   .panel-content.active { display: block; }
-
-  .juz-section h3 {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    color: var(--primary-dark);
-  }
-
-  .juz-section p {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    margin-bottom: 12px;
-  }
-
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: #000;
-  }
-
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .nearest-section {
-    text-align: center;
-  }
-
-  .nearest-card {
-    background: var(--primary-light);
-    border-radius: var(--radius);
-    padding: 16px;
-    margin-bottom: 12px;
-  }
-
-  .nearest-card .mosque-name {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--primary-dark);
-  }
-
-  .nearest-card .mosque-district {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    margin-top: 2px;
-  }
-
-  .nearest-card .mosque-distance {
-    font-size: 0.9rem;
-    color: var(--primary);
-    font-weight: 600;
-    margin-top: 6px;
-  }
-
-  .navigate-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--primary);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius);
-    padding: 12px 24px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-
+  .juz-section p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; }
+  .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: var(--radius); overflow: hidden; background: #000; }
+  .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .juz-links { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .juz-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: all 0.2s; }
+  .juz-link.emushaf { background: var(--gold-light); color: var(--primary-dark); border: 1px solid var(--gold); }
+  .juz-link.emushaf:hover { background: var(--gold); }
+  .nearest-section { text-align: center; }
+  .nearest-card { background: var(--primary-light); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+  .nearest-card .mosque-name { font-weight: 700; font-size: 1rem; color: var(--primary-dark); }
+  .nearest-card .mosque-district { font-size: 0.85rem; color: var(--text-light); margin-top: 2px; }
+  .nearest-card .mosque-distance { font-size: 0.9rem; color: var(--primary); font-weight: 600; margin-top: 6px; }
+  .navigate-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #fff; border: none; border-radius: var(--radius); padding: 12px 24px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; }
   .navigate-btn:hover { background: var(--primary-dark); }
-
-  .location-prompt {
-    color: var(--text-light);
-    font-size: 0.85rem;
-  }
-
-  .search-box {
-    position: absolute;
-    top: 110px;
-    left: 12px;
-    z-index: 1000;
-  }
-
-  .search-box input {
-    width: 200px;
-    padding: 10px 14px;
-    border: none;
-    border-radius: var(--radius);
-    font-size: 0.85rem;
-    box-shadow: var(--shadow);
-    outline: none;
-    background: var(--card-bg);
-  }
-
-  .search-box input:focus {
-    box-shadow: 0 0 0 2px var(--primary), var(--shadow);
-  }
-
-  .district-filter {
-    position: absolute;
-    top: 155px;
-    left: 12px;
-    z-index: 1000;
-  }
-
-  .district-filter select {
-    padding: 8px 12px;
-    border: none;
-    border-radius: var(--radius);
-    font-size: 0.8rem;
-    box-shadow: var(--shadow);
-    outline: none;
-    background: var(--card-bg);
-    cursor: pointer;
-    max-width: 200px;
-  }
-
-  .mosque-list-panel {
-    max-height: 250px;
-    overflow-y: auto;
-  }
-
-  .mosque-list-item {
-    padding: 10px 12px;
-    border-bottom: 1px solid #f0f0ed;
-    cursor: pointer;
-    transition: background 0.15s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
+  .location-prompt { color: var(--text-light); font-size: 0.85rem; }
+  .search-box { position: absolute; top: 110px; left: 12px; z-index: 1000; }
+  .search-box input { width: 200px; padding: 10px 14px; border: none; border-radius: var(--radius); font-size: 0.85rem; box-shadow: var(--shadow); outline: none; background: var(--card-bg); }
+  .search-box input:focus { box-shadow: 0 0 0 2px var(--primary), var(--shadow); }
+  .district-filter { position: absolute; top: 155px; left: 12px; z-index: 1000; }
+  .district-filter select { padding: 8px 12px; border: none; border-radius: var(--radius); font-size: 0.8rem; box-shadow: var(--shadow); outline: none; background: var(--card-bg); cursor: pointer; max-width: 200px; }
+  .mosque-list-panel { max-height: 250px; overflow-y: auto; }
+  .mosque-list-item { padding: 10px 12px; border-bottom: 1px solid #f0f0ed; cursor: pointer; transition: background 0.15s; display: flex; justify-content: space-between; align-items: center; }
   .mosque-list-item:hover { background: var(--primary-light); }
-
-  .mosque-list-item .name {
-    font-weight: 600;
-    font-size: 0.85rem;
-  }
-
-  .mosque-list-item .district {
-    font-size: 0.75rem;
-    color: var(--text-light);
-  }
-
-  .mosque-list-item .dist {
-    font-size: 0.75rem;
-    color: var(--primary);
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
-  .leaflet-popup-content-wrapper {
-    border-radius: var(--radius) !important;
-    box-shadow: var(--shadow) !important;
-  }
-
-  .popup-content {
-    text-align: center;
-    padding: 4px 0;
-  }
-
-  .popup-content .name {
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--primary-dark);
-    margin-bottom: 2px;
-  }
-
-  .popup-content .district {
-    font-size: 0.8rem;
-    color: var(--text-light);
-    margin-bottom: 8px;
-  }
-
-  .popup-content .nav-link {
-    display: inline-block;
-    background: var(--primary);
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-
-  .no-ramadan {
-    text-align: center;
-    padding: 30px 20px;
-    color: var(--text-light);
-  }
-
-  .no-ramadan h3 {
-    color: var(--primary-dark);
-    margin-bottom: 8px;
-  }
-
-  .juz-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .juz-nav button {
-    background: var(--primary-light);
-    border: none;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-    cursor: pointer;
-    color: var(--primary-dark);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-
+  .mosque-list-item .name { font-weight: 600; font-size: 0.85rem; }
+  .mosque-list-item .district { font-size: 0.75rem; color: var(--text-light); }
+  .mosque-list-item .dist { font-size: 0.75rem; color: var(--primary); font-weight: 600; white-space: nowrap; }
+  .leaflet-popup-content-wrapper { border-radius: var(--radius) !important; box-shadow: var(--shadow) !important; }
+  .popup-content { text-align: center; padding: 4px 0; }
+  .popup-content .name { font-weight: 700; font-size: 0.9rem; color: var(--primary-dark); margin-bottom: 2px; }
+  .popup-content .district { font-size: 0.8rem; color: var(--text-light); margin-bottom: 8px; }
+  .popup-content .score { font-size: 0.75rem; color: var(--gold); margin-bottom: 6px; }
+  .popup-content .nav-link { display: inline-block; background: var(--primary); color: #fff; padding: 6px 14px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: 600; }
+  .juz-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
+  .juz-nav button { background: var(--primary-light); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; cursor: pointer; color: var(--primary-dark); font-weight: 700; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
   .juz-nav button:hover { background: var(--primary); color: #fff; }
   .juz-nav button:disabled { opacity: 0.3; cursor: default; }
   .juz-nav button:disabled:hover { background: var(--primary-light); color: var(--primary-dark); }
-
-  .juz-nav .juz-label {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--primary-dark);
-    min-width: 80px;
-    text-align: center;
-  }
-
-  @media (max-width: 480px) {
-    header h1 { font-size: 1.1rem; }
-    .search-box input { width: 160px; }
-    .controls { right: 8px; }
-    .search-box { left: 8px; }
-    .district-filter { left: 8px; }
-  }
+  .juz-nav .juz-label { font-weight: 700; font-size: 1rem; color: var(--primary-dark); min-width: 80px; text-align: center; }
+  @media (max-width: 480px) { header h1 { font-size: 1.1rem; } .search-box input { width: 160px; } .controls { right: 8px; } .search-box { left: 8px; } .district-filter { left: 8px; } }
 </style>
 </head>
 <body>
-
 <header>
-  <h1>Hatimle Teravih Namazı</h1>
+  <h1>Hatimle Teravih Namazi</h1>
   <div class="subtitle">Istanbul 2026 / Ramazan 1447</div>
 </header>
-
 <div class="ramadan-info" id="ramadanInfo">
   <span id="ramadanDay">Ramazan</span>
   <span class="day-badge" id="juzBadge">Cuz</span>
 </div>
-
 <div style="position:relative; flex:1; display:flex; flex-direction:column;">
   <div id="map"></div>
-
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Cami ara...">
-  </div>
-
-  <div class="district-filter">
-    <select id="districtFilter">
-      <option value="">Tum ilceler</option>
-    </select>
-  </div>
-
+  <div class="search-box"><input type="text" id="searchInput" placeholder="Cami ara..."></div>
+  <div class="district-filter"><select id="districtFilter"><option value="">Tum ilceler</option></select></div>
   <div class="controls">
     <button class="ctrl-btn primary-btn" id="locateBtn" onclick="locateUser()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg>
@@ -434,22 +100,17 @@
     </button>
     <button class="ctrl-btn" id="nearestBtn" onclick="showNearestTab()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
-      En Yakın
+      En Yakin
     </button>
   </div>
 </div>
-
 <div class="bottom-panel">
   <div class="panel-tabs">
     <button class="panel-tab active" data-tab="juz" onclick="switchTab('juz')">Gunun Cuzu</button>
-    <button class="panel-tab" data-tab="nearest" onclick="switchTab('nearest')">En Yakın Cami</button>
+    <button class="panel-tab" data-tab="nearest" onclick="switchTab('nearest')">En Yakin Cami</button>
     <button class="panel-tab" data-tab="list" onclick="switchTab('list')">Cami Listesi</button>
   </div>
-
-  <div class="panel-content active" id="tab-juz">
-    <div class="juz-section" id="juzContent"></div>
-  </div>
-
+  <div class="panel-content active" id="tab-juz"><div class="juz-section" id="juzContent"></div></div>
   <div class="panel-content" id="tab-nearest">
     <div class="nearest-section" id="nearestContent">
       <p class="location-prompt">Konumunuzu paylasarak en yakin camiyi bulun</p>
@@ -459,318 +120,129 @@
       </button>
     </div>
   </div>
-
-  <div class="panel-content" id="tab-list">
-    <div class="mosque-list-panel" id="mosqueList"></div>
-  </div>
+  <div class="panel-content" id="tab-list"><div class="mosque-list-panel" id="mosqueList"></div></div>
 </div>
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const MOSQUES = [{"no":1,"district":"ADALAR","mosque":"HACI MEHMET KERSE MESCİDİ","lat":40.8778519,"lon":29.0992876},{"no":74,"district":"FATİH","mosque":"MİHRİMAH SULTAN CAMİİ","lat":41.0293567,"lon":28.9358092},{"no":2,"district":"ARNAVUTKÖY","mosque":"ARNAVUTKÖY MERKEZ CAMİİ","lat":41.182337,"lon":28.7419405},{"no":75,"district":"FATİH","mosque":"MİHRİNAZ HATUN CAMİİ","lat":41.006381,"lon":28.9758715},{"no":3,"district":"ARNAVUTKÖY","mosque":"HADIMKÖY MERKEZ CAMİİ","lat":41.184471,"lon":28.7412446},{"no":76,"district":"FATİH","mosque":"MİMAR MEHMETAĞA CAMİİ","lat":41.006381,"lon":28.9758715},{"no":4,"district":"ARNAVUTKÖY","mosque":"TAŞOLUK YEŞİL CAMİİ","lat":41.184471,"lon":28.7412446},{"no":77,"district":"FATİH","mosque":"MURATPAŞA CAMİİ","lat":41.0103249,"lon":28.9489207},{"no":5,"district":"ARNAVUTKÖY","mosque":"ABDULHAMİT HAN CAMİİ","lat":41.184471,"lon":28.7412446},{"no":78,"district":"FATİH","mosque":"MUSTAFA MUSLİHİDDİN YARHİSAR CAMİİ","lat":41.006381,"lon":28.9758715},{"no":6,"district":"ARNAVUTKÖY","mosque":"İMRAHOR MH. HZ. ÖMER CAMİİ","lat":41.184471,"lon":28.7412446},{"no":79,"district":"FATİH","mosque":"SANKİYEDİM CAMİİ","lat":41.006381,"lon":28.9758715},{"no":7,"district":"ATAŞEHİR","mosque":"SELMAN-I FARİSİ CAMİİ","lat":40.9959407,"lon":29.098826},{"no":80,"district":"FATİH","mosque":"SOĞANAĞA CAMİİ","lat":41.0082859,"lon":28.9619298},{"no":8,"district":"ATAŞEHİR","mosque":"İMAM-I BUHARİ CAMİİ","lat":40.9929379,"lon":29.1135187},{"no":81,"district":"FATİH","mosque":"SOKULLU MEHMET PAŞA CAMİİ","lat":41.0221162,"lon":28.5761499},{"no":9,"district":"AVCILAR","mosque":"FETİH CAMİİ","lat":41.0211349,"lon":28.8724979},{"no":82,"district":"FATİH","mosque":"SULTANAHMET CAMİİ","lat":41.0053843,"lon":28.9768534},{"no":10,"district":"BAĞCILAR","mosque":"ABDURRAHİM ÇAĞIRICI CAMİİ","lat":41.034547,"lon":28.8567558},{"no":83,"district":"FATİH","mosque":"ŞEHZADEBAŞI CAMİİ","lat":41.0138337,"lon":28.95716},{"no":11,"district":"BAĞCILAR","mosque":"ESMA HATUN KOCACIK CAMİİ","lat":41.034547,"lon":28.8567558},{"no":84,"district":"FATİH","mosque":"ŞEVKET ÇUKURBOSTAN CAMİİ","lat":41.006381,"lon":28.9758715},{"no":12,"district":"BAĞCILAR","mosque":"MİMAR SİNAN CAMİİ","lat":40.9958578,"lon":29.1123309},{"no":85,"district":"FATİH","mosque":"TAHİRAĞA CAMİİ","lat":41.0238638,"lon":28.9554439},{"no":13,"district":"BAĞCILAR","mosque":"HACI KERİMOĞLU CAMİİ","lat":41.034547,"lon":28.8567558},{"no":86,"district":"FATİH","mosque":"YAVUZ SULTAN SELİM CAMİİ","lat":41.0266327,"lon":28.9514557},{"no":14,"district":"BAĞCILAR","mosque":"AKSAKAL MESCİDİ","lat":41.034547,"lon":28.8567558},{"no":87,"district":"FATİH","mosque":"YUSUF ŞUCAATTİN CAMİİ","lat":41.006381,"lon":28.9758715},{"no":15,"district":"BAĞCILAR","mosque":"AHMED ZİYAÜDDİN GÜMÜŞHANEVİ CAMİİ","lat":41.034547,"lon":28.8567558},{"no":88,"district":"GAZİOSMANPAŞA","mosque":"PROFESÖR MAHMUT ESAT COŞAN CAMİİ","lat":41.0578305,"lon":28.9122452},{"no":16,"district":"BAHÇELİEVLER","mosque":"ADNAN TOROS CAMİİ","lat":41.0030495,"lon":28.8657701},{"no":89,"district":"GAZİOSMANPAŞA","mosque":"HACI VEYS CAMİİ","lat":41.0578305,"lon":28.9122452},{"no":17,"district":"BAHÇELİEVLER","mosque":"HACI NİHAT ERSİN CAMİİ","lat":41.0030495,"lon":28.8657701},{"no":90,"district":"GAZİOSMANPAŞA","mosque":"KÜÇÜKKÖY MERKEZ CAMİİ","lat":41.0740952,"lon":28.9025644},{"no":18,"district":"BAHÇELİEVLER","mosque":"İMAM BUHARİ ERKEK KUR'AN KURSU","lat":41.0030495,"lon":28.8657701},{"no":91,"district":"GAZİOSMANPAŞA","mosque":"KÜÇÜKKÖY TATBİKAT CAMİİ","lat":41.0578305,"lon":28.9122452},{"no":19,"district":"BAHÇELİEVLER","mosque":"KANDİL CAMİİ","lat":41.0030495,"lon":28.8657701},{"no":92,"district":"GÜNGÖREN","mosque":"GENÇ OSMAN CAMİİ","lat":41.0267881,"lon":28.8740653},{"no":20,"district":"BAHÇELİEVLER","mosque":"KOCASİNAN MERKEZ CAMİİ","lat":41.0030495,"lon":28.8657701},{"no":93,"district":"KADIKÖY","mosque":"M.Ü. SALİHA KULAKSIZOĞLU CAMİİ","lat":40.9912955,"lon":29.0245631},{"no":21,"district":"BAHÇELİEVLER","mosque":"ŞEHİT MEHMET KARAASLAN CAMİİ","lat":41.0026287,"lon":28.8769422},{"no":94,"district":"KADIKÖY","mosque":"TATARAĞASI CAMİİ","lat":40.9912955,"lon":29.0245631},{"no":22,"district":"BAŞAKŞEHİR","mosque":"HZ.BİLALİ HABEŞİ CAMİİ","lat":41.1075794,"lon":28.7950711},{"no":95,"district":"KADIKÖY","mosque":"B. KETHÜDA CAMİİ","lat":40.9912955,"lon":29.0245631},{"no":23,"district":"BAŞAKŞEHİR","mosque":"MEDİNE MÜDAFİİ FAHRETTİN PAŞA CAMİİ","lat":41.1075794,"lon":28.7950711},{"no":96,"district":"KAĞITHANE","mosque":"SADABAD CAMİİ","lat":41.0699735,"lon":28.9628825},{"no":24,"district":"BAŞAKŞEHİR","mosque":"EMLAK KONUT CAMİİ","lat":41.1144273,"lon":28.7673345},{"no":97,"district":"KAĞITHANE","mosque":"SULTAN SELİM MEYDAN CAMİİ","lat":41.0796544,"lon":28.9731198},{"no":25,"district":"BAŞAKŞEHİR","mosque":"SÜLEYMAN ÇELEBİ CAMİİ","lat":41.1052818,"lon":28.8002647},{"no":98,"district":"KARTAL","mosque":"MAARİFİ CAMİİ","lat":40.8883293,"lon":29.1906455},{"no":26,"district":"BAŞAKŞEHİR","mosque":"SÜLEYMAN ŞAH CAMİİ","lat":41.1364392,"lon":28.7759461},{"no":99,"district":"KARTAL","mosque":"HASAN TAHSİN UĞUR CAMİİ","lat":40.9039972,"lon":29.182149},{"no":27,"district":"BAŞAKŞEHİR","mosque":"HZ.İBRAHİM CAMİİ","lat":41.0121721,"lon":28.8913226},{"no":100,"district":"KARTAL","mosque":"SOĞANLIK GÜMÜŞPINAR CAMİİ","lat":40.88858,"lon":29.1856536},{"no":28,"district":"BAŞAKŞEHİR","mosque":"MEHMET AKİF ERSOY CAMİİ","lat":41.0894554,"lon":28.9161554},{"no":101,"district":"KÜÇÜKÇEKMECE","mosque":"SEFAKÖY GÜLTEPE CAMİİ","lat":40.9918737,"lon":28.7711956},{"no":29,"district":"BAŞAKŞEHİR","mosque":"MEHMET ZAHİT KOTKU CAMİİ","lat":41.057749,"lon":28.660201},{"no":102,"district":"KÜÇÜKÇEKMECE","mosque":"HAYATİ ÜSTÜN CAMİİ","lat":40.9918737,"lon":28.7711956},{"no":30,"district":"BAŞAKŞEHİR","mosque":"HZ.HAMZA CAMİİ","lat":41.0143426,"lon":29.1003002},{"no":103,"district":"KÜÇÜKÇEKMECE","mosque":"HAFIZ İHSAN HACI ŞÜKRAN ÖZKUR (İZÜ) CAMİİ","lat":40.9918737,"lon":28.7711956},{"no":31,"district":"BAŞAKŞEHİR","mosque":"EMLAK KONUT BAŞAKŞEHİR EVLERİ CAMİİ","lat":41.1075794,"lon":28.7950711},{"no":104,"district":"MALTEPE","mosque":"HÜSNİYE ARAT-MEHMET MACİT CAMİİ","lat":40.9247539,"lon":29.1310782},{"no":32,"district":"BAŞAKŞEHİR","mosque":"ŞEHİT ÖMER HALİS DEMİR CAMİİ","lat":41.1075794,"lon":28.7950711},{"no":105,"district":"MALTEPE","mosque":"ZÜMRÜT CAMİİ","lat":40.9247539,"lon":29.1310782},{"no":33,"district":"BAYRAMPAŞA","mosque":"ALTINTEPSİ MERKEZ CAMİİ","lat":41.0389509,"lon":28.90241},{"no":106,"district":"PENDİK","mosque":"SAHİL CAMİİ","lat":40.8768715,"lon":29.2349672},{"no":34,"district":"BAYRAMPAŞA","mosque":"BİLAL-İ HABEŞİ CAMİİ","lat":41.029537,"lon":29.163224},{"no":107,"district":"PENDİK","mosque":"ÇAMLIK İBRAHİM HAKKI HZ. CAMİİ","lat":40.8768715,"lon":29.2349672},{"no":35,"district":"BAYRAMPAŞA","mosque":"HAYIRSEVERLER CAMİİ","lat":41.0345549,"lon":28.9118417},{"no":108,"district":"PENDİK","mosque":"HÜSNÜ KIRKAN GÜL CAMİİ","lat":40.8768715,"lon":29.2349672},{"no":36,"district":"BAYRAMPAŞA","mosque":"YEŞİL CAMİİ","lat":41.0484062,"lon":28.9013053},{"no":109,"district":"PENDİK","mosque":"İBRAHİM AZMİ BEĞEN CAMİİ","lat":40.8590479,"lon":29.2934362},{"no":37,"district":"BAYRAMPAŞA","mosque":"YEŞİLÇİMEN CAMİİ","lat":41.0345549,"lon":28.9118417},{"no":110,"district":"SANCAKTEPE","mosque":"AHMET TURAN KARAKOÇ HACI MÜSLÜM YILDIZ CAMİİ","lat":40.9905196,"lon":29.2288624},{"no":38,"district":"BAYRAMPAŞA","mosque":"KARTALTEPE ÇİFTEŞEREFELİ CAMİİ","lat":41.0345549,"lon":28.9118417},{"no":111,"district":"SANCAKTEPE","mosque":"SAMANDIRA MERKEZ CAMİİ","lat":40.9853141,"lon":29.2268924},{"no":39,"district":"BEŞİKTAŞ","mosque":"ERTUĞRUL TEKKE CAMİİ","lat":41.0456727,"lon":29.0085401},{"no":112,"district":"SARIYER","mosque":"CUMHURİYET MH. HACIOSMAN CAMİİ","lat":41.1685803,"lon":29.0572623},{"no":40,"district":"BEYKOZ","mosque":"ABDÜLVEHHAP EVVAB EFENDİ CAMİİ","lat":41.1343001,"lon":29.0920378},{"no":113,"district":"SARIYER","mosque":"ALİ KETHÜDA CAMİİ","lat":41.1689976,"lon":29.0578778},{"no":41,"district":"BEYKOZ","mosque":"ÇAVUŞBAŞI HZ. ÖMER CAMİİ","lat":41.1343001,"lon":29.0920378},{"no":114,"district":"SİLİVRİ","mosque":"ABDULLAH ALİYE CAN CAMİİ","lat":41.0852453,"lon":28.2610739},{"no":42,"district":"BEYKOZ","mosque":"YALIKÖY SERBOSTANİ MUSTAFAAĞA CAMİİ","lat":41.1343001,"lon":29.0920378},{"no":115,"district":"SULTANBEYLİ","mosque":"ULU CAMİİ","lat":41.0133885,"lon":29.0978021},{"no":43,"district":"BEYLİKDÜZÜ","mosque":"MOLLA GÜRANİ CAMİİ","lat":41.0162653,"lon":28.9603299},{"no":116,"district":"SULTANBEYLİ","mosque":"RIFAT BÖREKÇİ CAMİİ","lat":41.0859352,"lon":28.6545383},{"no":44,"district":"BEYOĞLU","mosque":"KURTÇELEBİ CAMİİ","lat":41.0284233,"lon":28.9736808},{"no":117,"district":"SULTANBEYLİ","mosque":"FUAT SEZGİN ANADOLU İMAM HATİP LİSESİ MESCİDİ","lat":40.9670242,"lon":29.2671314},{"no":45,"district":"BEYOĞLU","mosque":"YERALTI CAMİİ","lat":41.0223504,"lon":28.9766316},{"no":118,"district":"SULTANGAZİ","mosque":"MESCİDİ SELAM CAMİİ","lat":41.1043344,"lon":28.8614367},{"no":46,"district":"BÜYÜKÇEKMECE","mosque":"İMARET CAMİİ","lat":41.0213224,"lon":28.5802269},{"no":119,"district":"SULTANGAZİ","mosque":"HASAN MUHAMMED ALİ CAMİİ","lat":41.1043344,"lon":28.8614367},{"no":47,"district":"BÜYÜKÇEKMECE","mosque":"SAHİBÜL VEFA MESCİDİ","lat":41.0210133,"lon":28.5385499},{"no":120,"district":"SULTANGAZİ","mosque":"FEVZİ ÇAKMAK CAMİİ","lat":41.074773,"lon":28.950332},{"no":48,"district":"ÇATALCA","mosque":"MİLLET BAHÇESİ CAMİİ","lat":41.0265742,"lon":28.7838423},{"no":121,"district":"SULTANGAZİ","mosque":"RAVZA CAMİİ","lat":41.0657653,"lon":29.0762937},{"no":49,"district":"ÇEKMEKÖY","mosque":"HZ. ALİ CAMİİ","lat":41.0433111,"lon":28.7889388},{"no":122,"district":"ŞİLE","mosque":"HACIOSMANAĞA CAMİİ","lat":41.1744067,"lon":29.6125216},{"no":50,"district":"ÇEKMEKÖY","mosque":"ALEMDAĞ HACI MAHMUT EFENDİ CAMİİ","lat":41.0351579,"lon":29.1739149},{"no":123,"district":"ŞİŞLİ","mosque":"OSMANBEY CAMİİ","lat":41.0637891,"lon":28.9831642},{"no":51,"district":"ESENLER","mosque":"SABRİ ÜLKER CAMİİ","lat":41.0376175,"lon":28.8824519},{"no":124,"district":"TUZLA","mosque":"EVLİYA ÇELEBİ MAH. EVLİYA ÇELEBİ CAMİİ","lat":40.8161732,"lon":29.3034194},{"no":52,"district":"ESENLER","mosque":"HACI CEZMİ İPKİN CAMİİ","lat":41.0443365,"lon":28.8811843},{"no":125,"district":"ÜMRANİYE","mosque":"İLİM SARAYI CAMİİ","lat":41.032086,"lon":29.1037597},{"no":53,"district":"ESENLER","mosque":"HAYIRSEVER CAMİİ","lat":41.0376175,"lon":28.8824519},{"no":126,"district":"ÜMRANİYE","mosque":"İMAM-I AZAM CAMİİ","lat":41.0263668,"lon":29.1022362},{"no":54,"district":"ESENYURT","mosque":"İBRAHİM MERMER CAMİİ","lat":41.0138928,"lon":28.6467549},{"no":127,"district":"ÜMRANİYE","mosque":"AHİ EVREN MESCİDİ","lat":41.0256362,"lon":29.0963049},{"no":55,"district":"ESENYURT","mosque":"KIRAÇ MUHACİR MAHALLESİ CAMİİ","lat":41.0342862,"lon":28.6801113},{"no":128,"district":"ÜMRANİYE","mosque":"TEVHİD CAMİİ","lat":41.0252095,"lon":29.2611489},{"no":56,"district":"EYÜPSULTAN","mosque":"ALİBEYKÖY GÜZELYAYLA CAMİİ","lat":41.0478358,"lon":28.9327383},{"no":129,"district":"ÜMRANİYE","mosque":"HÜDAYİ CAMİİ","lat":41.0222594,"lon":29.014271},{"no":57,"district":"EYÜPSULTAN","mosque":"ALİBEYKÖY HATİCE SULTAN CAMİİ","lat":41.0768279,"lon":28.9469725},{"no":130,"district":"ÜMRANİYE","mosque":"HZ. EBUBEKİR CAMİİ","lat":40.8850603,"lon":29.3363803},{"no":58,"district":"EYÜPSULTAN","mosque":"ARPACI HAYRETTİN CAMİİ","lat":41.0421029,"lon":28.9358401},{"no":131,"district":"ÜMRANİYE","mosque":"MODOKO HABİBİ NECCAR CAMİİ","lat":41.0256362,"lon":29.0963049},{"no":59,"district":"EYÜPSULTAN","mosque":"HÜSEYİN ŞAHİN CAMİİ","lat":41.0478358,"lon":28.9327383},{"no":132,"district":"ÜSKÜDAR","mosque":"ALTUNİZADE CAMİİ","lat":41.0205642,"lon":29.0454741},{"no":60,"district":"EYÜPSULTAN","mosque":"KİREMİTÇİ SÜLEYMAN ÇELEBİ (KIZILMESCİT) CAMİİ","lat":41.0478358,"lon":28.9327383},{"no":133,"district":"ÜSKÜDAR","mosque":"AZİZ MAHMUT HÜDAİ CAMİİ","lat":41.0265498,"lon":29.0151321},{"no":61,"district":"EYÜPSULTAN","mosque":"PROF.DR. MAHMUT ESAT COŞAN CAMİİ","lat":41.0478358,"lon":28.9327383},{"no":134,"district":"ÜSKÜDAR","mosque":"ÇİLEHANE CAMİİ","lat":41.0151247,"lon":29.0687534},{"no":62,"district":"EYÜPSULTAN","mosque":"ŞEVKİBEY CAMİİ","lat":41.0437465,"lon":28.9264711},{"no":135,"district":"ÜSKÜDAR","mosque":"KAPTANPAŞA CAMİİ","lat":41.0228187,"lon":29.0124729},{"no":63,"district":"EYÜPSULTAN","mosque":"CEDİD ALİ PAŞA CAMİİ","lat":41.0457931,"lon":28.9306426},{"no":136,"district":"ÜSKÜDAR","mosque":"KEREM AYDINLAR CAMİİ","lat":41.0265498,"lon":29.0151321},{"no":64,"district":"FATİH","mosque":"BEHRUZAĞA ODABAŞI CAMİİ","lat":41.006381,"lon":28.9758715},{"no":137,"district":"ÜSKÜDAR","mosque":"KULELİKAYMAK MUSTAFAPAŞA CAMİİ","lat":41.0265498,"lon":29.0151321},{"no":65,"district":"FATİH","mosque":"DİBEK CAMİİ","lat":41.0182066,"lon":28.9436091},{"no":138,"district":"ÜSKÜDAR","mosque":"KÜPLÜCE CAMİİ","lat":41.0396342,"lon":29.0484148},{"no":66,"district":"FATİH","mosque":"FEVZİYE KÜÇÜKEFENDİ CAMİİ","lat":41.006381,"lon":28.9758715},{"no":139,"district":"ÜSKÜDAR","mosque":"MİHRİMAH SULTAN (İSKELE) CAMİİ","lat":41.0265498,"lon":29.0151321},{"no":67,"district":"FATİH","mosque":"GAZİ AHMETPAŞA CAMİİ","lat":41.006381,"lon":28.9758715},{"no":140,"district":"ÜSKÜDAR","mosque":"ÖMER ÖZTÜRK CAMİİ","lat":41.0265498,"lon":29.0151321},{"no":68,"district":"FATİH","mosque":"HACI HAMZA CAMİİ","lat":41.0012076,"lon":28.9238635},{"no":141,"district":"ÜSKÜDAR","mosque":"ŞEMSİ SİVASİ CAMİİ","lat":41.0265498,"lon":29.0151321},{"no":69,"district":"FATİH","mosque":"HIRKAİ ŞERİF CAMİİ","lat":41.006381,"lon":28.9758715},{"no":142,"district":"ÜSKÜDAR","mosque":"ÜNALAN MH. ÜNALAN CAMİİ","lat":41.0265498,"lon":29.0151321},{"no":70,"district":"FATİH","mosque":"HOCA ÜVEYZ CAMİİ","lat":41.0202752,"lon":28.9444936},{"no":143,"district":"ZEYTİNBURNU","mosque":"SEYYİD NİZAM CAMİİ","lat":40.9898653,"lon":28.9037467},{"no":71,"district":"FATİH","mosque":"İSKENDERPAŞA CAMİİ","lat":41.006381,"lon":28.9758715},{"no":144,"district":"ZEYTİNBURNU","mosque":"ULU CAMİİ","lat":41.0133885,"lon":29.0978021},{"no":72,"district":"FATİH","mosque":"KUMRULU MESCİDİ","lat":41.006381,"lon":28.9758715},{"no":73,"district":"FATİH","mosque":"MACUNCU KASIM CAMİİ","lat":41.0122385,"lon":28.9345024}];
+const CRESCENT_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="14" fill="#0d4a30" stroke="#fff" stroke-width="2"/><g transform="translate(15,15) scale(0.55)"><path d="M3,-12 A10,10 0 1,0 3,12 A7.5,7.5 0 1,1 3,-12Z" fill="#c9a84c"/><polygon points="10,-2 11.2,1.5 15,1.8 12,4.2 13,8 10,5.8 7,8 8,4.2 5,1.8 8.8,1.5" fill="#c9a84c"/></g></svg>`;
+const CRESCENT_ICON_URL = 'data:image/svg+xml;base64,' + btoa(CRESCENT_SVG);
+const JUZ_VIDEOS = ["wj1cpyRWZYM","5jrIvaMABlI","fxKYtfnHFwE","3FD_Zqhcg9w","T2Vle2xDNks","yc1jFX6ctEc","ZXXUySC37RI","aW6cWVRALm0","HJx60zJ48qQ","DO-w82MdFfw","vUM51_vClkU","hPygHDDVY1o","LivHKFq4RdU","xYB-zLs7EgA","OLQbT8wz4jc","vwQqf2kmDj8","NHsF-TuGI68","9DN1jLjRA3M","bOU6Z9gARI8","aaLXt0d6hpo","-IysTQpiPng","_Y9vF6oVdQA","cjipU7EceTw","w0TyNLBLLHw","x4LnkiyG6bA","A5ZeJ6rBYCw","7dz_1fWALyQ","ZC_eZLmMe48","FeduQaXDfkg","ana4Xslgs6o"];
+const RAMADAN_FIRST_TARAWIH = new Date(2026, 1, 18);
+let MOSQUES = [], map, markers = [], userMarker, userLat, userLon, currentJuz = null;
 
-const JUZ_VIDEOS = [
-  "wj1cpyRWZYM","5jrIvaMABlI","fxKYtfnHFwE","3FD_Zqhcg9w","T2Vle2xDNks",
-  "yc1jFX6ctEc","ZXXUySC37RI","aW6cWVRALm0","HJx60zJ48qQ","DO-w82MdFfw",
-  "vUM51_vClkU","hPygHDDVY1o","LivHKFq4RdU","xYB-zLs7EgA","OLQbT8wz4jc",
-  "vwQqf2kmDj8","NHsF-TuGI68","9DN1jLjRA3M","bOU6Z9gARI8","aaLXt0d6hpo",
-  "-IysTQpiPng","_Y9vF6oVdQA","cjipU7EceTw","w0TyNLBLLHw","x4LnkiyG6bA",
-  "A5ZeJ6rBYCw","7dz_1fWALyQ","ZC_eZLmMe48","FeduQaXDfkg","ana4Xslgs6o"
-];
+function titleCase(s){return s.toLowerCase().split(' ').map(w=>w.length<=2?w.toUpperCase():w[0].toUpperCase()+w.slice(1)).join(' ');}
+function getRamadanDay(){const d=Math.floor((new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())-RAMADAN_FIRST_TARAWIH)/864e5);return d<0||d>=30?null:d+1;}
+function getDistance(a,b,c,d){const R=6371,dL=(c-a)*Math.PI/180,dN=(d-b)*Math.PI/180,x=Math.sin(dL/2)**2+Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(dN/2)**2;return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));}
+function formatDistance(k){return k<1?Math.round(k*1000)+' m':k.toFixed(1)+' km';}
 
-// Ramadan 2026: first day of fasting = Feb 19, first Tarawih evening = Feb 18
-const RAMADAN_FIRST_TARAWIH = new Date(2026, 1, 18); // Feb 18, 2026
-const RAMADAN_LAST_DAY = new Date(2026, 2, 19); // ~March 19, 2026
-
-let map, markers = [], userMarker, userLat, userLon;
-let currentJuz = null;
-let visibleMarkers = [];
-
-// Title case helper
-function titleCase(str) {
-  return str.toLowerCase().split(' ').map(w => {
-    if (w.length <= 2) return w.toUpperCase();
-    return w.charAt(0).toUpperCase() + w.slice(1);
-  }).join(' ');
+function parseCSV(text){
+  const lines=text.trim().split('\n');
+  if(lines[0].charCodeAt(0)===0xFEFF)lines[0]=lines[0].slice(1);
+  const headers=lines[0].split(',');
+  const data=[];
+  for(let i=1;i<lines.length;i++){
+    const vals=[];let cur='',inQ=false;
+    for(const c of lines[i]){if(c==='"')inQ=!inQ;else if(c===','&&!inQ){vals.push(cur.trim());cur='';}else cur+=c;}
+    vals.push(cur.trim());
+    if(vals.length>=headers.length){const o={};headers.forEach((h,j)=>o[h.trim()]=vals[j]||'');data.push(o);}
+  }
+  return data;
 }
 
-// Calculate Ramadan day
-function getRamadanDay() {
-  const now = new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const diff = Math.floor((today - RAMADAN_FIRST_TARAWIH) / (1000 * 60 * 60 * 24));
-  if (diff < 0 || diff >= 30) return null;
-  return diff + 1; // 1-indexed
+async function loadMosques(){
+  const resp=await fetch('mosques.csv');
+  const text=await resp.text();
+  const rows=parseCSV(text);
+  MOSQUES=rows.filter(r=>r.latitude&&r.longitude).map(r=>({
+    no:parseInt(r.index),mosque:r.mosque_name,district:r.district,
+    lat:parseFloat(r.latitude),lon:parseFloat(r.longitude),
+    score:r.google_maps_score||null,gmapsUrl:r.google_maps_url||null
+  }));
 }
 
-// Distance calculation (Haversine)
-function getDistance(lat1, lon1, lat2, lon2) {
-  const R = 6371;
-  const dLat = (lat2 - lat1) * Math.PI / 180;
-  const dLon = (lon2 - lon1) * Math.PI / 180;
-  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-    Math.sin(dLon/2) * Math.sin(dLon/2);
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-}
-
-function formatDistance(km) {
-  if (km < 1) return Math.round(km * 1000) + ' m';
-  return km.toFixed(1) + ' km';
-}
-
-// Initialize map
-function initMap() {
-  map = L.map('map').setView([41.015, 28.98], 11);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 19
-  }).addTo(map);
-
-  const mosqueIcon = L.divIcon({
-    html: '<div style="background:#1a6b4a;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);">&#9765;</div>',
-    className: '',
-    iconSize: [28, 28],
-    iconAnchor: [14, 14]
+function initMap(){
+  map=L.map('map').setView([41.015,28.98],11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',maxZoom:19}).addTo(map);
+  const icon=L.icon({iconUrl:CRESCENT_ICON_URL,iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-16]});
+  MOSQUES.forEach(m=>{
+    if(!m.lat||!m.lon)return;
+    const mk=L.marker([m.lat,m.lon],{icon});
+    const nav=`https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lon}&travelmode=walking`;
+    const sc=m.score?`<div class="score">${'★'.repeat(Math.round(parseFloat(m.score)))} ${m.score}</div>`:'';
+    mk.bindPopup(`<div class="popup-content"><div class="name">${titleCase(m.mosque)}</div><div class="district">${titleCase(m.district)}</div>${sc}<a href="${nav}" target="_blank" class="nav-link">Yol Tarifi</a></div>`);
+    mk.mosqueData=m;mk.addTo(map);markers.push(mk);
   });
-
-  MOSQUES.forEach(m => {
-    if (!m.lat || !m.lon) return;
-    const marker = L.marker([m.lat, m.lon], { icon: mosqueIcon });
-    const navUrl = `https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lon}&travelmode=walking`;
-    marker.bindPopup(`
-      <div class="popup-content">
-        <div class="name">${titleCase(m.mosque)}</div>
-        <div class="district">${titleCase(m.district)}</div>
-        <a href="${navUrl}" target="_blank" class="nav-link">Yol Tarifi</a>
-      </div>
-    `);
-    marker.mosqueData = m;
-    marker.addTo(map);
-    markers.push(marker);
-  });
-
-  visibleMarkers = [...markers];
 }
 
-// Populate district filter
-function initDistrictFilter() {
-  const districts = [...new Set(MOSQUES.map(m => m.district))].sort();
-  const select = document.getElementById('districtFilter');
-  districts.forEach(d => {
-    const opt = document.createElement('option');
-    opt.value = d;
-    opt.textContent = titleCase(d);
-    select.appendChild(opt);
-  });
-
-  select.addEventListener('change', filterMosques);
+function initDistrictFilter(){
+  const ds=[...new Set(MOSQUES.map(m=>m.district))].sort();
+  const sel=document.getElementById('districtFilter');
+  ds.forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=titleCase(d);sel.appendChild(o);});
+  sel.addEventListener('change',filterMosques);
 }
 
-// Search + filter
-function filterMosques() {
-  const search = document.getElementById('searchInput').value.toLowerCase();
-  const district = document.getElementById('districtFilter').value;
-
-  markers.forEach(marker => {
-    const m = marker.mosqueData;
-    const matchSearch = !search ||
-      m.mosque.toLowerCase().includes(search) ||
-      m.district.toLowerCase().includes(search);
-    const matchDistrict = !district || m.district === district;
-
-    if (matchSearch && matchDistrict) {
-      if (!map.hasLayer(marker)) marker.addTo(map);
-    } else {
-      if (map.hasLayer(marker)) map.removeLayer(marker);
-    }
-  });
-
+function filterMosques(){
+  const s=document.getElementById('searchInput').value.toLowerCase(),d=document.getElementById('districtFilter').value;
+  markers.forEach(mk=>{const m=mk.mosqueData;const ok=(!s||m.mosque.toLowerCase().includes(s)||m.district.toLowerCase().includes(s))&&(!d||m.district===d);if(ok){if(!map.hasLayer(mk))mk.addTo(map);}else{if(map.hasLayer(mk))map.removeLayer(mk);}});
   updateMosqueList();
 }
 
-// Locate user
-function locateUser() {
-  if (!navigator.geolocation) {
-    alert('Tarayiciniz konum desteklemiyor.');
-    return;
-  }
-
-  const btn = document.getElementById('locateBtn');
-  btn.textContent = 'Aranıyor...';
-
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      userLat = pos.coords.latitude;
-      userLon = pos.coords.longitude;
-
-      if (userMarker) map.removeLayer(userMarker);
-
-      const userIcon = L.divIcon({
-        html: '<div style="background:#3b82f6;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #3b82f6,0 2px 6px rgba(0,0,0,0.3);"></div>',
-        className: '',
-        iconSize: [16, 16],
-        iconAnchor: [8, 8]
-      });
-
-      userMarker = L.marker([userLat, userLon], { icon: userIcon }).addTo(map);
-      userMarker.bindPopup('<b>Konumunuz</b>').openPopup();
-      map.setView([userLat, userLon], 13);
-
-      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg> Konumum';
-
-      updateNearestSection();
-      updateMosqueList();
-      switchTab('nearest');
-    },
-    (err) => {
-      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg> Konumum';
-      alert('Konum alinamadi. Lutfen konum izni verin.');
-    },
-    { enableHighAccuracy: true, timeout: 10000 }
-  );
+function locateUser(){
+  if(!navigator.geolocation){alert('Konum desteklenmiyor.');return;}
+  const btn=document.getElementById('locateBtn');btn.textContent='Araniyor...';
+  navigator.geolocation.getCurrentPosition(pos=>{
+    userLat=pos.coords.latitude;userLon=pos.coords.longitude;
+    if(userMarker)map.removeLayer(userMarker);
+    const ui=L.divIcon({html:'<div style="background:#3b82f6;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #3b82f6,0 2px 6px rgba(0,0,0,0.3);"></div>',className:'',iconSize:[16,16],iconAnchor:[8,8]});
+    userMarker=L.marker([userLat,userLon],{icon:ui}).addTo(map);userMarker.bindPopup('<b>Konumunuz</b>').openPopup();
+    map.setView([userLat,userLon],13);
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg> Konumum';
+    updateNearestSection();updateMosqueList();switchTab('nearest');
+  },()=>{btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg> Konumum';alert('Konum alinamadi.');},{enableHighAccuracy:true,timeout:10000});
 }
 
-// Update nearest section
-function updateNearestSection() {
-  if (!userLat || !userLon) return;
-
-  const sorted = MOSQUES
-    .filter(m => m.lat && m.lon)
-    .map(m => ({
-      ...m,
-      distance: getDistance(userLat, userLon, m.lat, m.lon)
-    }))
-    .sort((a, b) => a.distance - b.distance);
-
-  const top3 = sorted.slice(0, 3);
-  const container = document.getElementById('nearestContent');
-
-  container.innerHTML = top3.map((m, i) => {
-    const navUrl = `https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lon}&travelmode=walking`;
-    return `
-      <div class="nearest-card" onclick="map.setView([${m.lat},${m.lon}],16)" style="cursor:pointer">
-        <div class="mosque-name">${i === 0 ? '&#11088; ' : ''}${titleCase(m.mosque)}</div>
-        <div class="mosque-district">${titleCase(m.district)}</div>
-        <div class="mosque-distance">${formatDistance(m.distance)}</div>
-      </div>
-      ${i === 0 ? `<a href="${navUrl}" target="_blank" class="navigate-btn" style="margin-bottom:16px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
-        Google Maps ile Yol Tarifi
-      </a>` : ''}
-    `;
+function updateNearestSection(){
+  if(!userLat||!userLon)return;
+  const sorted=MOSQUES.filter(m=>m.lat&&m.lon).map(m=>({...m,distance:getDistance(userLat,userLon,m.lat,m.lon)})).sort((a,b)=>a.distance-b.distance);
+  const top3=sorted.slice(0,3),el=document.getElementById('nearestContent');
+  el.innerHTML=top3.map((m,i)=>{
+    const nav=`https://www.google.com/maps/dir/?api=1&destination=${m.lat},${m.lon}&travelmode=walking`;
+    return `<div class="nearest-card" onclick="map.setView([${m.lat},${m.lon}],16)" style="cursor:pointer"><div class="mosque-name">${i===0?'&#11088; ':''}${titleCase(m.mosque)}</div><div class="mosque-district">${titleCase(m.district)}</div><div class="mosque-distance">${formatDistance(m.distance)}</div></div>${i===0?`<a href="${nav}" target="_blank" class="navigate-btn" style="margin-bottom:16px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Google Maps ile Yol Tarifi</a>`:''}`;
   }).join('');
 }
 
-// Update mosque list
-function updateMosqueList() {
-  const search = document.getElementById('searchInput').value.toLowerCase();
-  const district = document.getElementById('districtFilter').value;
-
-  let filtered = MOSQUES.filter(m => {
-    const matchSearch = !search ||
-      m.mosque.toLowerCase().includes(search) ||
-      m.district.toLowerCase().includes(search);
-    const matchDistrict = !district || m.district === district;
-    return matchSearch && matchDistrict && m.lat && m.lon;
-  });
-
-  if (userLat && userLon) {
-    filtered = filtered.map(m => ({
-      ...m,
-      distance: getDistance(userLat, userLon, m.lat, m.lon)
-    })).sort((a, b) => a.distance - b.distance);
-  } else {
-    filtered.sort((a, b) => a.district.localeCompare(b.district) || a.mosque.localeCompare(b.mosque));
-  }
-
-  const container = document.getElementById('mosqueList');
-  container.innerHTML = filtered.map(m => `
-    <div class="mosque-list-item" onclick="map.setView([${m.lat},${m.lon}],16);markers.find(mk=>mk.mosqueData.no===${m.no})?.openPopup()">
-      <div>
-        <div class="name">${titleCase(m.mosque)}</div>
-        <div class="district">${titleCase(m.district)}</div>
-      </div>
-      ${m.distance !== undefined ? `<div class="dist">${formatDistance(m.distance)}</div>` : ''}
-    </div>
-  `).join('');
+function updateMosqueList(){
+  const s=document.getElementById('searchInput').value.toLowerCase(),d=document.getElementById('districtFilter').value;
+  let f=MOSQUES.filter(m=>(!s||m.mosque.toLowerCase().includes(s)||m.district.toLowerCase().includes(s))&&(!d||m.district===d)&&m.lat&&m.lon);
+  if(userLat&&userLon)f=f.map(m=>({...m,distance:getDistance(userLat,userLon,m.lat,m.lon)})).sort((a,b)=>a.distance-b.distance);
+  else f.sort((a,b)=>a.district.localeCompare(b.district)||a.mosque.localeCompare(b.mosque));
+  document.getElementById('mosqueList').innerHTML=f.map(m=>`<div class="mosque-list-item" onclick="map.setView([${m.lat},${m.lon}],16);markers.find(mk=>mk.mosqueData.no===${m.no})?.openPopup()"><div><div class="name">${titleCase(m.mosque)}</div><div class="district">${titleCase(m.district)}</div></div>${m.distance!==undefined?`<div class="dist">${formatDistance(m.distance)}</div>`:''}</div>`).join('');
 }
 
-// Initialize Juz section
-function initJuzSection() {
-  const day = getRamadanDay();
-  currentJuz = day || 1;
-  renderJuz(currentJuz);
-  updateRamadanInfo(day);
+function initJuzSection(){const d=getRamadanDay();currentJuz=d||1;renderJuz(currentJuz);updateRamadanInfo(d);}
+
+function updateRamadanInfo(day){
+  const dEl=document.getElementById('ramadanDay'),bEl=document.getElementById('juzBadge');
+  if(day){dEl.textContent=`Ramazan ${day}. Gece`;bEl.textContent=`${day}. Cuz`;}
+  else if(new Date()<RAMADAN_FIRST_TARAWIH){dEl.textContent='Ramazan yaklasıyor';bEl.textContent='Beklemede';}
+  else{dEl.textContent='Ramazan 2026';bEl.textContent='144 Cami';}
 }
 
-function updateRamadanInfo(day) {
-  const infoEl = document.getElementById('ramadanInfo');
-  const dayEl = document.getElementById('ramadanDay');
-  const badgeEl = document.getElementById('juzBadge');
-
-  if (day) {
-    dayEl.textContent = `Ramazan ${day}. Gece`;
-    badgeEl.textContent = `${day}. Cuz`;
-  } else {
-    const now = new Date();
-    if (now < RAMADAN_FIRST_TARAWIH) {
-      dayEl.textContent = 'Ramazan yaklasıyor';
-      badgeEl.textContent = 'Beklemede';
-    } else {
-      dayEl.textContent = 'Ramazan 2026';
-      badgeEl.textContent = '144 Cami';
-    }
-  }
+function renderJuz(juz){
+  currentJuz=juz;const el=document.getElementById('juzContent'),day=getRamadanDay(),today=day===juz;
+  el.innerHTML=`
+    <div class="juz-nav"><button onclick="renderJuz(${juz-1})" ${juz<=1?'disabled':''}>&larr;</button><div class="juz-label">${juz}. Cuz${today?' (Bugun)':''}</div><button onclick="renderJuz(${juz+1})" ${juz>=30?'disabled':''}>&rarr;</button></div>
+    <p>${today?'Bu gece teravihte okunacak cuzun meali:':`${juz}. cuzun Turkce meali:`}</p>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/${JUZ_VIDEOS[juz-1]}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    <div class="juz-links"><a href="https://emushaf.net/cuz/${juz}/" target="_blank" class="juz-link emushaf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>${juz}. Cuz Arapca Metin (e-Mushaf)</a></div>`;
 }
 
-function renderJuz(juz) {
-  currentJuz = juz;
-  const container = document.getElementById('juzContent');
-  const day = getRamadanDay();
-  const isToday = day === juz;
+function switchTab(t){document.querySelectorAll('.panel-tab').forEach(e=>e.classList.remove('active'));document.querySelectorAll('.panel-content').forEach(e=>e.classList.remove('active'));document.querySelector(`[data-tab="${t}"]`).classList.add('active');document.getElementById(`tab-${t}`).classList.add('active');if(t==='list')updateMosqueList();}
+function showNearestTab(){if(!userLat||!userLon)locateUser();else switchTab('nearest');}
 
-  container.innerHTML = `
-    <div class="juz-nav">
-      <button onclick="renderJuz(${juz - 1})" ${juz <= 1 ? 'disabled' : ''}>&larr;</button>
-      <div class="juz-label">${juz}. Cuz${isToday ? ' (Bugun)' : ''}</div>
-      <button onclick="renderJuz(${juz + 1})" ${juz >= 30 ? 'disabled' : ''}>&rarr;</button>
-    </div>
-    <p>${isToday ? 'Bu gece teravihte okunacak cuzun meali:' : `${juz}. cuzun Turkce meali:`}</p>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/${JUZ_VIDEOS[juz - 1]}"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy"></iframe>
-    </div>
-  `;
-}
-
-// Tab switching
-function switchTab(tabName) {
-  document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel-content').forEach(c => c.classList.remove('active'));
-  document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-  document.getElementById(`tab-${tabName}`).classList.add('active');
-
-  if (tabName === 'list') updateMosqueList();
-}
-
-function showNearestTab() {
-  if (!userLat || !userLon) {
-    locateUser();
-  } else {
-    switchTab('nearest');
-  }
-}
-
-// Init
-document.addEventListener('DOMContentLoaded', () => {
-  initMap();
-  initDistrictFilter();
-  initJuzSection();
-  updateMosqueList();
-
-  document.getElementById('searchInput').addEventListener('input', filterMosques);
+document.addEventListener('DOMContentLoaded',async()=>{
+  await loadMosques();initMap();initDistrictFilter();initJuzSection();updateMosqueList();
+  document.getElementById('searchInput').addEventListener('input',filterMosques);
 });
 </script>
 </body>
